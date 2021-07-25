@@ -1,0 +1,31 @@
+.Modal {
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.6s all;
+}
+.Modal.Active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.Modal__Content {
+  padding: 10px;
+  border-radius: 20px;
+  width: 50vw;
+  background: whitesmoke;
+  transform: scale(0.5);
+  transition: 0.4s;
+}
+
+.Modal__Content.Active {
+  transform: scale(1);
+}

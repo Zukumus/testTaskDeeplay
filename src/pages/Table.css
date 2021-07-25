@@ -1,0 +1,32 @@
+.Table__Task {
+  color: white;
+  width: 100%;
+  margin-bottom: 20px;
+  border: 15px solid #1b7777;
+  border-top: 5px solid #121f1f;
+  border-collapse: collapse;
+}
+
+.Table__Task-Head {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.Table__Task-th {
+  text-align: left;
+  font-weight: bold;
+  height: 8vh;
+  padding: 5px;
+  background: rgb(22, 41, 41);
+  border: 5px solid rgb(78, 144, 144);
+}
+.Table__Task-td {
+  padding: 100px;
+  background: rgb(1, 19, 19);
+  height: 5.7vh;
+  padding: 5px;
+  cursor: grab;
+  border-bottom: 5px solid rgb(38, 70, 70);
+}
