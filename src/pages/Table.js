@@ -96,7 +96,7 @@ function Table() {
           )}
         </tbody>
       </table>
-      <Modal active={modalActive} setActive={setModalActive}>{ }</Modal>
+      <Modal active={modalActive} setActive={setModalActive}>TEXT TEXT TEXT TEXT</Modal>
     </div >
 
   );
