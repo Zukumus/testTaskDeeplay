@@ -1,6 +1,6 @@
 export const infoData = [
    { id: 11, task: 'захватить мир', name: 'Elon Mask', manager: 'Man in Black', date: '2008-06-04 18:13:56', priority: 2 },
-   { id: 12, task: 'Обед', name: 'Elon Mask', manager: 'Man in Black', date: '2009-06-04 18:13:56', priority: 2 },
+   { id: 12, task: 'Обед', name: 'Elon Mask', manager: 'Man in Black', date: '2009-06-04 18:13:56', priority: 99 },
    { id: 3, task: ' починить пальцы рук', name: 'Elon Mask', manager: 'Man in Black', date: '2009-06-04 18:13:56', priority: 3 },
    { id: 4, task: 'купить хлеб', name: 'Elon Mask', manager: 'Man in Black', date: '2011-06-04 18:13:56', priority: 1 },
    { id: 31, task: 'захватить мир', name: 'Elon Mask', manager: 'Man in Black', date: '2010-06-04 18:13:56', priority: 5 },

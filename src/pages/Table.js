@@ -46,18 +46,16 @@ function Table() {
     );
   };
 
-  const sortTasks = (a, b) => {
-    if (a.priority > b.priority) {
-      return 1
-    } else {
-      return -1
-    }
+  // sort field in console, field off
+  const sortParametr = (field) => {
+    const sortParametr = infoTasks.sort((a, b) => { return a[field] > b[field] ? +1 : -1 }
+    );
+    console.log(sortParametr);
+    // setInfoTasks([...sortParametr]);
   };
-  // sort onClick
-  function sortingByPriority() {
-    const sortedTasks = infoTasks.sort(sortTasks);
-    setInfoTasks([...sortedTasks]);
-  };
+
+  // sortPriority
+  const sortTasksPriority = (a, b) => { return a.priority > b.priority ? +1 : -1 };
 
   if (loading) {
     return <Loader />
@@ -68,16 +66,16 @@ function Table() {
       <table id='Table__Task' className="Table__Task">
         <thead className="Table__Task-Head">
           <tr className="Table__Task-th">
-            <th>Id</th>
-            <th>Task</th>
-            <th>Name</th>
-            <th>Manager</th>
-            <th>Date</th>
-            <th style={{ cursor: 'pointer' }} onClick={sortingByPriority}>Priority</th>
+            <th style={{ cursor: 'pointer' }} onClick={() => sortParametr('id')}>Id</th>
+            <th style={{ cursor: 'pointer' }} onClick={() => sortParametr('task')}>Task</th>
+            <th style={{ cursor: 'pointer' }} onClick={() => sortParametr('name')}>Name</th>
+            <th style={{ cursor: 'pointer' }} onClick={() => sortParametr('Manager')}>Manager</th>
+            <th style={{ cursor: 'pointer' }} onClick={() => sortParametr('date')}>Date</th>
+            <th style={{ cursor: 'pointer' }} onClick={() => sortParametr('priority')}>Priority</th>
           </tr>
         </thead>
         <tbody >
-          {infoTasks.sort(sortTasks).map(task =>
+          {infoTasks.sort(sortTasksPriority).map(task =>
             <tr
               onDragStart={e => dragStartHandler(e, task)}
               onDragOver={e => dragOverHandler(e)}
