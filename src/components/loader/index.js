@@ -1,5 +1,5 @@
 import React from 'react';
-import './loader.css';
+import '../Loader/loader.css';
 
 const Loader = () => {
 
@@ -7,6 +7,6 @@ const Loader = () => {
       <div className="Loader">
          <div id="lds-dual-ring" className="lds-dual-ring"></div>
       </div>
-   )
-}
+   );
+};
 export default Loader

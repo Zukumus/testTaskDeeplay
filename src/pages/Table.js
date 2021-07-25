@@ -1,10 +1,8 @@
-import React, { useEffect, useState, Component } from 'react';
+import React, { useEffect, useState, } from 'react';
 import './Table.css';
-import Loader from '../components/loader';
-import Modal from '../components/modal';
+import Loader from '../components/Loader';
+import Modal from '../components/Modal';
 import API from '../api';
-
-
 
 function Table() {
   const [loading, setLoading] = useState(true);
@@ -16,51 +14,38 @@ function Table() {
     async function getTasks() {
       const newInfoTasks = await API.getTasks();
       setInfoTasks(newInfoTasks);
-      setLoading(false)
+      setLoading(false);
     }
-    getTasks()
-  });
+    getTasks();
+  }, []);
 
   function dragStartHandler(e, task) {
-    setCurrentTask(task)
-  }
-  function dragEndHandler(e) {
-
-  }
+    setCurrentTask(task);
+  };
 
   function dragOverHandler(e) {
-    e.preventDefault()
-  }
+    e.preventDefault();
+  };
 
   function dropHandler(e, task) {
     e.preventDefault();
-    console.log(infoTasks)
-    let dropTask = infoTasks.map(info => {
+    console.log(infoTasks);
+    setInfoTasks(infoTasks.map(info => {
       if (info.id === task.id) {
         return {
           ...info, priority: currentTask.priority
-        }
-        // return {
-        //   ...info, id: currentTask.id, task: currentTask.task,
-        //   name: currentTask.name, manager: currentTask.manager, date: currentTask.date,
-        //   priority: currentTask.priority,
-        // }
-      }
+        };
+      };
       if (info.id === currentTask.id) {
         return {
           ...info, priority: task.priority,
-        }
-        // return {
-        //   ...info, id: task.id, task: task.task,
-        //   name: task.name, manager: task.manager, date: task.date, priority: task.priority,
-        // }
-      }
+        };
+      };
       return info
     })
-    setInfoTasks(dropTask);
-  }
+    );
+  };
 
-  //Sort All Time
   const sortTasks = (a, b) => {
     if (a.priority > b.priority) {
       return 1
@@ -77,35 +62,6 @@ function Table() {
   if (loading) {
     return <Loader />
   };
-  if (modalActive) {
-
-  };
-  // function modal(e) {
-  //   if (modal)
-  //     return <Modal />
-  // }
-  // const tableId = document.getElementById('table__id');
-  // function clickTask(e) {
-  //   const tableId = document.getElementById('table__id');
-  //   tableId.addEventListener('onDoubleClick', e => {
-  //     let target = e.target;
-  //     console.log(target);
-  //     // if (target.tagName !== 'TD') return;
-  //   });
-  // };
-
-  // СlickTask extends Component {
-  //   clickTask = e => {
-  //     const { firstHandler, secondHandler } = this.props;
-  //     firstHandler(e){
-  //       return setModalActive(true);
-  //     };
-  //     secondHander(e){
-  //       return console.log(e.target);
-  //     };
-  //   }
-  // };
-
 
   return (
     <div>
@@ -124,13 +80,10 @@ function Table() {
           {infoTasks.sort(sortTasks).map(task =>
             <tr
               onDragStart={e => dragStartHandler(e, task)}
-              onDragLeave={e => dragEndHandler(e)}
-              onDragEnd={e => dragEndHandler(e)}
               onDragOver={e => dragOverHandler(e)}
               onDrop={e => dropHandler(e, task)}
               draggable={true}
               onDoubleClick={() => setModalActive(true)}
-              // onDoubleClick={(e) => console.log(e.target)}
               id='table__id'
               className="Table__Task-td" key={task.id} >
               <td>{task.id}</td>
@@ -143,10 +96,10 @@ function Table() {
           )}
         </tbody>
       </table>
-      <Modal active={modalActive} setActive={setModalActive}>target</Modal>
+      <Modal active={modalActive} setActive={setModalActive}>{ }</Modal>
     </div >
 
   );
-}
+};
 
 export default Table

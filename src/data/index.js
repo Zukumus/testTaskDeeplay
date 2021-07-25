@@ -24,4 +24,4 @@ export const infoData = [
    { id: 23, task: 'захватить мир', name: 'Elon Mask', manager: 'Man in Black', date: '2009-06-04 18:13:56', priority: 23 },
    { id: 24, task: 'захватить мир', name: 'Elon Mask', manager: 'Man in Black', date: '2009-06-04 18:13:56', priority: 24 },
    { id: 25, task: 'захватить мир', name: 'Elon Mask', manager: 'Man in Black', date: '2009-06-04 18:13:56', priority: 25 },
-]
+];

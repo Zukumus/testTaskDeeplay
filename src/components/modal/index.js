@@ -1,5 +1,5 @@
 import React from 'react';
-import './modal.css';
+import '../Modal/modal.css';
 
 const Modal = ({ active, setActive, children }) => {
 
@@ -9,6 +9,6 @@ const Modal = ({ active, setActive, children }) => {
             {children}
          </div>
       </div>
-   )
-}
+   );
+};
 export default Modal
