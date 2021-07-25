@@ -31,12 +31,14 @@ function Table() {
   function dragOverHandler(e) {
     e.preventDefault()
   }
+
   function dropHandler(e, task) {
     e.preventDefault();
-    const dropTask = infoTasks.map(info => {
+    console.log(infoTasks)
+    let dropTask = infoTasks.map(info => {
       if (info.id === task.id) {
         return {
-          ...info, priority: currentTask.priority,
+          ...info, priority: currentTask.priority
         }
         // return {
         //   ...info, id: currentTask.id, task: currentTask.task,
@@ -55,7 +57,7 @@ function Table() {
       }
       return info
     })
-    setInfoTasks(dropTask)
+    setInfoTasks(dropTask);
   }
 
   //Sort All Time
@@ -69,12 +71,15 @@ function Table() {
   // sort onClick
   function sortingByPriority() {
     const sortedTasks = infoTasks.sort(sortTasks);
-    setInfoTasks([...sortedTasks])
-  }
+    setInfoTasks([...sortedTasks]);
+  };
+
   if (loading) {
     return <Loader />
-  }
+  };
+  if (modalActive) {
 
+  };
   // function modal(e) {
   //   if (modal)
   //     return <Modal />
@@ -102,10 +107,6 @@ function Table() {
   // };
 
 
-
-
-
-
   return (
     <div>
       <table id='Table__Task' className="Table__Task">
@@ -128,8 +129,8 @@ function Table() {
               onDragOver={e => dragOverHandler(e)}
               onDrop={e => dropHandler(e, task)}
               draggable={true}
-              // onDoubleClick={() => setModalActive(true)}
-              onDoubleClick={(e) => console.log(e.target)}
+              onDoubleClick={() => setModalActive(true)}
+              // onDoubleClick={(e) => console.log(e.target)}
               id='table__id'
               className="Table__Task-td" key={task.id} >
               <td>{task.id}</td>
@@ -142,7 +143,7 @@ function Table() {
           )}
         </tbody>
       </table>
-      <Modal active={modalActive} setActive={setModalActive}>sssss</Modal>
+      <Modal active={modalActive} setActive={setModalActive}>target</Modal>
     </div >
 
   );
