@@ -70,9 +70,8 @@ function Table() {
   if (loading) {
     return <Loader />
   };
-  // if (setClickTaskInfo) {
-  //   return < />
-  // }
+
+
 
   return (
     <div>
@@ -109,14 +108,18 @@ function Table() {
           )}
         </tbody>
       </table>
-      {/* {if(clickTaskInfo){
-        return{
 
-      }
-      }} */}
-      <Modal active={modalActive} setActive={setModalActive} children={clickTaskInfo}>
-        {/* {console.log(clickTaskInfo.id)} */}
-        {clickTaskInfo}
+      <Modal active={modalActive} setActive={setModalActive} >
+        {clickTaskInfo ? (
+          <div>
+            <p>{clickTaskInfo.id}</p>
+            <p>{clickTaskInfo.task}</p>
+            <p>{clickTaskInfo.name}</p>
+            <p>{clickTaskInfo.manager}</p>
+            <p>{clickTaskInfo.date}</p>
+            <p>{clickTaskInfo.priority}</p>
+          </div>
+        ) : ''}
       </Modal>
 
     </div >
@@ -127,24 +130,3 @@ function Table() {
 export default Table
 
 
-{/* {clickTaskInfo.map(task =>
-          <table>
-            <td>{task.id}</td>
-            <td>{task.task}</td>
-            <td>{task.name}</td>
-            <td>{task.manager}</td>
-            <td>{task.date}</td>
-            <td>{task.priority}</td>
-          </table>
-        )} */}
-
-{/* {clickTaskInfo.map(task =>
-          <table>
-            <td>{clickTaskInfo.id}</td>
-            <td>{clickTaskInfo.task}</td>
-            <td>{clickTaskInfo.name}</td>
-            <td>{clickTaskInfo.manager}</td>
-            <td>{clickTaskInfo.date}</td>
-            <td>{clickTaskInfo.priority}</td>
-          </table>
-        )} */}
