@@ -5,6 +5,7 @@ import Table from './pages/Table';
 
 ReactDOM.render(
   <React.StrictMode>
+
     <Table />
 
   </React.StrictMode>,

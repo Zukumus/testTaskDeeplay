@@ -9,12 +9,15 @@ function Table() {
   const [infoTasks, setInfoTasks] = useState(null);
   const [currentTask, setCurrentTask] = useState(null);
   const [modalActive, setModalActive] = useState(false);
+  const [clickTaskInfo, setClickTaskInfo] = useState(null);
+
 
   useEffect(() => {
     async function getTasks() {
       const newInfoTasks = await API.getTasks();
       setInfoTasks(newInfoTasks);
       setLoading(false);
+
     }
     getTasks();
   }, []);
@@ -57,9 +60,19 @@ function Table() {
   // sortPriority
   const sortTasksPriority = (a, b) => { return a.priority > b.priority ? +1 : -1 };
 
+
+  // viewTaskInfo
+  const viewTaskInfo = (clickTask) => {
+    setClickTaskInfo(clickTask);
+  };
+
+
   if (loading) {
     return <Loader />
   };
+  // if (setClickTaskInfo) {
+  //   return < />
+  // }
 
   return (
     <div>
@@ -82,8 +95,10 @@ function Table() {
               onDrop={e => dropHandler(e, task)}
               draggable={true}
               onDoubleClick={() => setModalActive(true)}
+              onClick={() => viewTaskInfo(task)}
               id='table__id'
-              className="Table__Task-td" key={task.id} >
+              className="Table__Task-td" key={task.id}
+            >
               <td>{task.id}</td>
               <td>{task.task}</td>
               <td>{task.name}</td>
@@ -94,10 +109,42 @@ function Table() {
           )}
         </tbody>
       </table>
-      <Modal active={modalActive} setActive={setModalActive}>TEXT TEXT TEXT TEXT</Modal>
+      {/* {if(clickTaskInfo){
+        return{
+
+      }
+      }} */}
+      <Modal active={modalActive} setActive={setModalActive} children={clickTaskInfo}>
+        {/* {console.log(clickTaskInfo.id)} */}
+        {clickTaskInfo}
+      </Modal>
+
     </div >
 
   );
 };
 
 export default Table
+
+
+{/* {clickTaskInfo.map(task =>
+          <table>
+            <td>{task.id}</td>
+            <td>{task.task}</td>
+            <td>{task.name}</td>
+            <td>{task.manager}</td>
+            <td>{task.date}</td>
+            <td>{task.priority}</td>
+          </table>
+        )} */}
+
+{/* {clickTaskInfo.map(task =>
+          <table>
+            <td>{clickTaskInfo.id}</td>
+            <td>{clickTaskInfo.task}</td>
+            <td>{clickTaskInfo.name}</td>
+            <td>{clickTaskInfo.manager}</td>
+            <td>{clickTaskInfo.date}</td>
+            <td>{clickTaskInfo.priority}</td>
+          </table>
+        )} */}
